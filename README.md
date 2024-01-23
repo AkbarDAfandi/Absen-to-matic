@@ -30,9 +30,9 @@ Absen-to-matic is a project that me and 2 of my friends put together for a schoo
 
 ## The Team
 
-Adriansyah Ramadhani | X-RPL | 04
-Alief Hafshah Ilmiawan | X-RPL | 05
-Muhammad Akbar Dwi Afandi | X-RPL | 17
+- Adriansyah Ramadhani | X-RPL | 04
+- Alief Hafshah Ilmiawan | X-RPL | 05
+- Muhammad Akbar Dwi Afandi | X-RPL | 17
 
 ## To-do
 
