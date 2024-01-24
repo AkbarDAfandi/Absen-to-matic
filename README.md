@@ -40,7 +40,8 @@ Absen-to-matic is a project that me and 2 of my friends put together for a schoo
 - [x] Add CRUD feature
 - [x] Add login page
 - [x] Add admin dashboard
-- [ ] Add Teachers dashboard
-- [ ] Add Students dashboard
-- [ ] Camera Intergration(just partially)
-- [ ] QR code generator
+- [ ] Add Teachers dashboard(bare bone)
+- [x] Add QR/Barcode Reader
+- [ ] Add a feture that save data after QR/Barcode is scanned
+- [ ] Add timestamp on scans
+
