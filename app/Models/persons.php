@@ -14,6 +14,7 @@ class persons extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'NIPD',
         'Kelas',
         'Jurusan',
         'No Absen',

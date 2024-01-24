@@ -29,8 +29,15 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('webcam', [App\Http\Controllers\camController::class, 'index']);
-Route::post('webcam', [App\Http\Controllers\camController::class, 'store'])->name('webcam.capture');
+Route::get('dashGuru', [App\Http\Controllers\guruController::class, 'view'])
+    ->middleware(['auth'])
+    ->name('dashGuru');
+
+
+Route::post('dashGuru', [App\Http\Controllers\guruController::class, 'search'])
+    ->middleware(['auth'])
+    ->name('dashGuru.search');
+
 
 
 require __DIR__.'/auth.php';

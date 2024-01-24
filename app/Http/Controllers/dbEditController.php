@@ -7,7 +7,6 @@ use App\Models\persons;
 
 class dbEditController extends Controller
 {
-
     public function index()
     {
         $persons = Person::all();
