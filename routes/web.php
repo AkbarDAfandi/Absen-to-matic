@@ -32,5 +32,6 @@ Route::view('profile', 'profile')
 Route::get('webcam', [App\Http\Controllers\camController::class, 'index']);
 Route::post('webcam', [App\Http\Controllers\camController::class, 'store'])->name('webcam.capture');
 
+Route::get('qrScanner', [App\Http\Controllers\qrScanners::class, 'index']);
 
 require __DIR__.'/auth.php';
