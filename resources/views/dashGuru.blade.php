@@ -34,11 +34,6 @@
             margin: 20px auto 0;
             align-self: center;
         }
-
-        .info-list {
-            position: absolute;
-            left: 20px;
-        }
     </style>
 
     <div class="py-12">
