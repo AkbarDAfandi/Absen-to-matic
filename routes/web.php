@@ -33,6 +33,9 @@ Route::get('dashGuru', [App\Http\Controllers\guruController::class, 'view'])
     ->middleware(['auth'])
     ->name('dashGuru');
 
+Route::get('dashGuru', [App\Http\Controllers\guruController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashGuru.index');
 
 Route::post('dashGuru', [App\Http\Controllers\guruController::class, 'search'])
     ->middleware(['auth'])

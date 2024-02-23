@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\persons;
+use App\Models\HistoryScans;
 
 class guruController extends Controller
 {
@@ -22,6 +23,21 @@ class guruController extends Controller
     public function view()
     {
         return view('dashGuru');
+    }
+
+    public function scanNipd(Request $request)
+    {
+        $history_scans = history_scans::create([
+            'nipd' => $request->nipd,
+            'scanned_at' => now()
+        ]);
+    }
+
+    public function index()
+    {
+        $history_scans = HistoryScan::all();
+
+        return view('dashGuru', ['historyScans' => $history_scans]);
     }
 
 }

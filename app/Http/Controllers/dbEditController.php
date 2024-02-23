@@ -40,6 +40,12 @@ class dbEditController extends Controller
         return redirect()->route('persons.index');
     }
 
+
+    public function add(Person $person)
+    {
+        return view('persons.add', compact('person'));
+    }
+
     public function destroy(Person $person)
     {
         $person->delete();
