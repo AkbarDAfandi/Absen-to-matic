@@ -99,9 +99,19 @@
         .analog-clock .second-hand {
             display: none;
         }
+
     </style>
 
     <div class="py-12">
+        @if ($errors->any())
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 overflow-auto">
+            <div role="alert" class="alert alert-error sm:table-auto mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Error! Data tidak ditemukan.</span>
+            </div>
+        </div>
+        @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-auto flex justify-between">
             <div class="bubble bubble-left">
                 <!-- Bubble kiri -->
@@ -110,38 +120,35 @@
                     <div class="minute-hand"></div>
                 </div>
             </div>
-
             <div class="bubble bubble-center">
-                <form name="nipd_inpt" action="{{ route('dashGuru.search') }}" method="POST" class="mb-5">
+                <form name="nipd_inpt" action="{{ route('dashGuru.search') }}" method="POST" class="mb-5"  wire:submit="addHistory()">
                     @csrf
-                    <input id="textarea" type="text"
-                        class="block w-full mt-2 text-gray-700 bg-white border border-gray-20" name="nipd"
-                        value="{{ old('nipd') }}" autocomplete="off" placeholder="NIPD" style="margin: 0 auto;">
+                    <input id="textarea" type="text" class="block w-full mt-2 text-gray-700 bg-white border border-gray-20" name="nipd" value="{{ old('nipd') }}" autocomplete="off" placeholder="NIPD" style="margin: 0 auto;" wire:model="nipd">
 
                     <button id="btn_submit" type="submit" class="hidden"></button>
                 </form>
 
                 <body>
                     @if (isset($person))
-                        <ul class="info-list" class="">
-                            <li class="editable"><b>NIPD</b> {{ $person->NIPD }}</li>
-                            <li class="editable"><b>JURUSAN</b> {{ $person->Jurusan }}</li>
-                            <li class="editable"><b>KELAS</b> {{ $person->Kelas }}</li>
-                            <li class="editable"><b>ABSEN</b> {{ $person->{'No Absen'} }}</li>
-                            <li class="editable"><b>NAMA</b> {{ $person->Nama }}</li>
-                            <li class="editable"><b>KELAMIN</b> {{ $person->{'Jenis Kelamin'} }}</li>
-                            <li class="editable"><b>WAKTU</b> {{ now()->format('H:i:s') }}</li>
-                        </ul>
+                    <ul class="info-list" class="">
+                        <li class="editable"><b>NIPD</b> {{ $person->NIPD }}</li>
+                        <li class="editable"><b>JURUSAN</b> {{ $person->Jurusan }}</li>
+                        <li class="editable"><b>KELAS</b> {{ $person->Kelas }}</li>
+                        <li class="editable"><b>ABSEN</b> {{ $person->{'No Absen'} }}</li>
+                        <li class="editable"><b>NAMA</b> {{ $person->Nama }}</li>
+                        <li class="editable"><b>KELAMIN</b> {{ $person->{'Jenis Kelamin'} }}</li>
+                        <li class="editable"><b>WAKTU</b> {{ now()->format('H:i:s') }}</li>
+                    </ul>
                     @else
-                        <ul class="info-list" class="">
-                            <li class="editable"><b>NIPD</b> -</li>
-                            <li class="editable"><b>JURUSAN</b> -</li>
-                            <li class="editable"><b>KELAS</b> -</li>
-                            <li class="editable"><b>ABSEN</b> -</li>
-                            <li class="editable"><b>NAMA</b> -</li>
-                            <li class="editable"><b>KELAMIN</b> -</li>
-                            <li class="editable"><b>WAKTU</b> -</li>
-                        </ul>
+                    <ul class="info-list" class="">
+                        <li class="editable"><b>NIPD</b> -</li>
+                        <li class="editable"><b>JURUSAN</b> -</li>
+                        <li class="editable"><b>KELAS</b> -</li>
+                        <li class="editable"><b>ABSEN</b> -</li>
+                        <li class="editable"><b>NAMA</b> -</li>
+                        <li class="editable"><b>KELAMIN</b> -</li>
+                        <li class="editable"><b>WAKTU</b> -</li>
+                    </ul>
                     @endif
                 </body>
             </div>
@@ -150,11 +157,14 @@
             </div>
         </div>
     </div>
+    @livewire('history')
 
     <script>
         window.addEventListener("keydown", () => {
             document.getElementById("textarea").focus()
         });
+
     </script>
 
 </x-app-layout>
+
