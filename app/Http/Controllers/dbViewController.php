@@ -28,6 +28,7 @@ class dbViewController extends Controller
             'No_Absen' => 'required',
             'Nama' => 'required',
             'Jenis_Kelamin' => 'required',
+            'image_url' => 'required',
         ]);
 
         $persons->update([
@@ -36,6 +37,7 @@ class dbViewController extends Controller
             'No_Absen' => $request->{'No Absen'},
             'Nama' => $request->Nama,
             'Jenis_Kelamin' => $request->{'Jenis Kelamin'},
+            'image_url' => $request->image_url,
         ]);
 
         return redirect('dashboard')->with('success', 'Berhasi mengubah data');
