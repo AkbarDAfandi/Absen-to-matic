@@ -91,7 +91,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span>Error! Data tidak ditemukan.</span>
+                    @foreach($errors->all() as $error)
+                        <span>{{ $error }}</span>
+                    @endforeach
                 </div>
             </div>
         @endif
@@ -110,8 +112,7 @@
 
             </div>
             <div class="bubble bubble-center">
-                <form name="nipd_inpt" action="{{ route('dashGuru.search') }}" method="POST" class="mb-5"
-                    wire:submit="addHistory()">
+                <form name="nipd_inpt" action="{{ route('dashGuru.search') }}" method="POST" class="mb-5">
                     @csrf
                     <input id="textarea" type="text"
                         class="block w-full mt-2 text-gray-700 bg-white border border-gray-20" name="nipd"
@@ -153,7 +154,6 @@
                 </div>
             </div>
         </div>
-        @livewire('history')
 
         <script>
             window.addEventListener("keydown", () => {

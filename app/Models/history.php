@@ -9,10 +9,11 @@ class history extends Model
 {
     use HasFactory;
 
-    public $timestamps = true;
-
     protected $table = 'history';
 
+    public $timestamps = ["created_at"];
+    const UPDATED_AT = null;
+    
     protected $fillable = [
         'NIPD',
         'Kelas',

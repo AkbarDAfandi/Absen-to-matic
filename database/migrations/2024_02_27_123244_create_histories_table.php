@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('history', function (Blueprint $table) {
-            $table->id('noUrut');
+            $table->increments('noUrut');
             $table->string('NIPD')->unique();
             $table->string('Kelas');
             $table->string('Jurusan');
             $table->string('No Absen')->unique();
             $table->string('Nama')->unique();
             $table->string('Jenis Kelamin');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

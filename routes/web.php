@@ -33,11 +33,14 @@ Route::get('dashGuru', [App\Http\Controllers\guruController::class, 'view'])
     ->middleware(['auth'])
     ->name('dashGuru');
 
-
 Route::post('dashGuru', [App\Http\Controllers\guruController::class, 'search'])
     ->middleware(['auth'])
     ->name('dashGuru.search');
 
+Route::get('rekap', [App\Http\Controllers\rekapView::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('rekapAbsen');
 
+Route::get('rekap/export/excel', [App\Http\Controllers\guruController::class, 'exportExcel']);
 
 require __DIR__.'/auth.php';

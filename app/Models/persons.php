@@ -9,7 +9,7 @@ class persons extends Model
 {
     use HasFactory;
 
-    protected $table = 'persons'; // the name of your table in the database
+    protected $table = 'persons';
 
     public $timestamps = false;
 
@@ -20,7 +20,6 @@ class persons extends Model
         'No Absen',
         'Nama',
         'Jenis Kelamin',
-    ]; // the names of the columns in your table
-
-    public $primaryKey = 'UUID'; // the name of the primary key column in your table
+    ];
+    public $primaryKey = 'UUID'; 
 }
